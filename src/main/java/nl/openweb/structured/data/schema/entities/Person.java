@@ -609,6 +609,12 @@ public class Person extends Thing {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public Person build() {
             return new Person(this);
         }

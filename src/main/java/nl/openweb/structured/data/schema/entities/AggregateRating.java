@@ -177,6 +177,11 @@ public class AggregateRating extends Rating {
             return this;
         }
 
+        @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
 
         @Override
         public AggregateRating build() {

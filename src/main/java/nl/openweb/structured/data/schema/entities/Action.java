@@ -273,6 +273,12 @@ public class Action extends Thing {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public Action build() {
             return new Action(this);
         }

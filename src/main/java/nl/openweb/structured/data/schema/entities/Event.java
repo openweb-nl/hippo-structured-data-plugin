@@ -23,7 +23,7 @@ public class Event extends Thing {
 
     @JsonProperty("startDate")
     public Date getStartDate() {
-        return startDate.getTime();
+        return startDate != null ? startDate.getTime() : null;
     }
 
     @JsonProperty("endDate")
@@ -144,6 +144,12 @@ public class Event extends Thing {
         @Override
         public Builder setId(String id) {
             super.setId(id);
+            return this;
+        }
+
+        @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
             return this;
         }
 

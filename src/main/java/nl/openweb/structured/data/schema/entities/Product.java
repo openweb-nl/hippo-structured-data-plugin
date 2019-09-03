@@ -391,6 +391,12 @@ public class Product extends Thing {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public Product build() {
             return new Product(this);
         }

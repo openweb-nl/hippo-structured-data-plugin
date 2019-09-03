@@ -124,6 +124,12 @@ public class ListItem extends Intangible {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public ListItem build() {
             return new ListItem(this);
         }

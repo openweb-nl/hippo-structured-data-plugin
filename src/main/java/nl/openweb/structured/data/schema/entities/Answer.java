@@ -348,6 +348,12 @@ public class Answer extends CreativeWork {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public Builder setImage(String image) {
             super.setImage(image);
             return this;

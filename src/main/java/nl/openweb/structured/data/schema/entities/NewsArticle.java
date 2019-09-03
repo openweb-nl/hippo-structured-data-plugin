@@ -528,6 +528,12 @@ public class NewsArticle extends Article {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public NewsArticle build() {
             return new NewsArticle(this);
         }

@@ -82,6 +82,12 @@ public class Intangible extends Thing {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public Intangible build() {
             return new Intangible(this);
         }
