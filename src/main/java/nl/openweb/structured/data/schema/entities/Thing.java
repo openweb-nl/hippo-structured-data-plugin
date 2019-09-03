@@ -11,6 +11,7 @@ public class Thing extends AbstractEntity {
     private Object sameAs;
     private String url;
     private String id;
+    private Thing subjectOf;
 
     protected Thing(Thing.Builder builder) {
         this.additionalType = builder.additionalType;
@@ -23,6 +24,7 @@ public class Thing extends AbstractEntity {
         this.sameAs = builder.sameAs;
         this.url = builder.url;
         this.id = builder.id;
+        this.subjectOf = builder.subjectOf;
     }
 
     @Override
@@ -66,6 +68,9 @@ public class Thing extends AbstractEntity {
         return url;
     }
 
+    public Thing getSubjectOf() {
+        return subjectOf;
+    }
 
     public static class Builder {
         private String additionalType;
@@ -78,7 +83,7 @@ public class Thing extends AbstractEntity {
         private Object sameAs;
         private String url;
         private String id;
-
+        private Thing subjectOf;
 
         public Builder setPotentialAction(Action potentialAction) {
             this.potentialAction = potentialAction;
@@ -137,6 +142,11 @@ public class Thing extends AbstractEntity {
 
         public Builder setId(String id) {
             this.id = id;
+            return this;
+        }
+
+        public Builder setSubjectOf(Thing subjectOf) {
+            this.subjectOf = subjectOf;
             return this;
         }
 

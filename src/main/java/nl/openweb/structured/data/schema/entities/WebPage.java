@@ -489,6 +489,11 @@ public class WebPage extends CreativeWork {
             return this;
         }
 
+        @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
 
         @Override
         public WebPage build() {

@@ -141,6 +141,12 @@ public class Rating extends Intangible {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public Rating build() {
             return new Rating(this);
         }

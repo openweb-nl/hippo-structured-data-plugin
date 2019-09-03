@@ -685,6 +685,12 @@ public class CreativeWork extends Thing {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public CreativeWork build() {
             return new CreativeWork(this);
         }

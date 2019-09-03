@@ -147,6 +147,12 @@ public class QuantitativeValue extends StructuredValue {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public QuantitativeValue build() {
             return new QuantitativeValue(this);
         }

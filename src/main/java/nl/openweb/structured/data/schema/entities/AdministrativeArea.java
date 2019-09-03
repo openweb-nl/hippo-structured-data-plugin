@@ -101,6 +101,12 @@ public class AdministrativeArea extends Place {
         }
 
         @Override
+        public Builder setSubjectOf(Thing subjectOf) {
+            super.setSubjectOf(subjectOf);
+            return this;
+        }
+
+        @Override
         public AdministrativeArea build() {
             return new AdministrativeArea(this);
         }
