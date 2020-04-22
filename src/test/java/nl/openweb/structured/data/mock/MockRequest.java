@@ -1,12 +1,29 @@
 package nl.openweb.structured.data.mock;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
-import java.util.*;
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.servlet.AsyncContext;
+import javax.servlet.DispatcherType;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpUpgradeHandler;
+import javax.servlet.http.Part;
 
 import org.mockito.Mockito;
 
@@ -37,6 +54,11 @@ public class MockRequest implements HttpServletRequest {
     @Override
     public String getCharacterEncoding() {
         return servletRequest.getCharacterEncoding();
+    }
+
+    @Override
+    public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
+        servletRequest.setCharacterEncoding(env);
     }
 
     @Override
@@ -190,13 +212,13 @@ public class MockRequest implements HttpServletRequest {
     }
 
     @Override
-    public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
-        servletRequest.setCharacterEncoding(env);
+    public int getContentLength() {
+        return servletRequest.getContentLength();
     }
 
     @Override
-    public int getContentLength() {
-        return servletRequest.getContentLength();
+    public long getContentLengthLong() {
+        return servletRequest.getContentLengthLong();
     }
 
     @Override
@@ -290,6 +312,11 @@ public class MockRequest implements HttpServletRequest {
     }
 
     @Override
+    public String changeSessionId() {
+        return servletRequest.changeSessionId();
+    }
+
+    @Override
     public HttpSession getSession(boolean create) {
         return servletRequest.getSession(create);
     }
@@ -340,6 +367,11 @@ public class MockRequest implements HttpServletRequest {
     }
 
     @Override
+    public <T extends HttpUpgradeHandler> T upgrade(final Class<T> aClass) throws IOException, ServletException {
+        return servletRequest.upgrade(aClass);
+    }
+
+    @Override
     public boolean isRequestedSessionIdValid() {
         return servletRequest.isRequestedSessionIdValid();
     }
@@ -348,6 +380,4 @@ public class MockRequest implements HttpServletRequest {
     public boolean isUserInRole(String role) {
         return servletRequest.isUserInRole(role);
     }
-
-
 }
