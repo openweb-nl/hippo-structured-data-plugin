@@ -1,38 +1,34 @@
 package nl.openweb.structured.data.tag;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.jsp.PageContext;
 import java.util.Calendar;
 import java.util.TimeZone;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.jsp.PageContext;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import nl.openweb.structured.data.AbstractStructuredDataTest;
 import nl.openweb.structured.data.domain.EventBean;
 import nl.openweb.structured.data.domain.LocationBean;
 import nl.openweb.structured.data.utils.StringWriter;
 import nl.openweb.structured.data.utils.TextFileUtils;
-
-
 import static org.mockito.Mockito.when;
-
 
 @RunWith(MockitoJUnitRunner.class)
 public class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest {
     private StructuredDataPlaceholderTag tag = new StructuredDataPlaceholderTag();
     private StructuredDataContributionTag contributionTag = new StructuredDataContributionTag();
+    private ServletRequest servletRequest = createMockHstRequest();
+    private StringWriter out = new StringWriter();
 
     @Mock
     private PageContext pageContext;
-
-    private ServletRequest servletRequest = createMockHstRequest();
-
-    private StringWriter out = new StringWriter();
 
     @Before
     public void init() {
@@ -42,7 +38,6 @@ public class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest
 
         when(pageContext.getRequest()).thenReturn(servletRequest);
         when(pageContext.getOut()).thenReturn(out);
-
     }
 
     private EventBean createEvent(String name, String url, LocationBean location, Calendar calendar) {
@@ -70,6 +65,4 @@ public class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest
         String string = out.getAsString();
         Assert.assertEquals(TextFileUtils.getFileAsString("expected/StructuredDataPlaceholderTagTest.txt"), string);
     }
-
-
 }
