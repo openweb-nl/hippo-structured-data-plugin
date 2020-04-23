@@ -11,13 +11,18 @@
   <groupId>nl.openweb.hippo.hst</groupId>
   <artifactId>structured-data</artifactId>
   <version>13.0.01-SNAPSHOT</version>
+
   <properties>
-    <jsp-api.version>2.2</jsp-api.version>
-    <taglibs.version>1.2.5</taglibs.version>
     <commons.lang.version>3.10</commons.lang.version>
+    <el-api.version>3.0.0</el-api.version>
+    <jsp-api.version>2.2</jsp-api.version>
     <junit.version>5.6.2</junit.version>
     <mockito.version>2.21.0</mockito.version>
+    <maven.plugin.release>3.0.0-M1</maven.plugin.release>
+    <pitest.version>1.5.1</pitest.version>
+    <taglibs.version>1.2.5</taglibs.version>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.onehippo.cms7.hst.dependencies</groupId>
@@ -45,7 +50,7 @@
     <dependency>
       <groupId>javax.el</groupId>
       <artifactId>javax.el-api</artifactId>
-      <version>3.0.0</version>
+      <version>${el-api.version}</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
@@ -66,12 +71,14 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <scm>
     <url>https://github.com/openweb-nl/hippo-structured-data-plugin</url>
     <connection>scm:git:git://github.com:openweb-nl/hippo-structured-data-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:openweb-nl/hippo-structured-data-plugin.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
+
   <distributionManagement>
     <repository>
       <id>openweb-maven-releases</id>
@@ -96,12 +103,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>3.0.0-M1</version>
+          <version>${maven.plugin.release}</version>
         </plugin>
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>1.5.1</version>
+          <version>${pitest.version}</version>
           <configuration>
             <targetClasses>
               <param>nl.openweb.structured.data.processing*</param>
@@ -118,5 +125,4 @@
       </plugins>
     </pluginManagement>
   </build>
-
 </project>
