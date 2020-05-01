@@ -2,6 +2,7 @@ package nl.openweb.structured.data.schema.entities;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,6 +12,11 @@ public class Event extends Thing {
     private Place location;
     private PostalAddress locationAsPostalAddress;
     private String locationAsString;
+    private boolean accessibleForFree;
+    private String organizer;
+    private String performer;
+    private List<Offer> offers;
+    private String eventStatus;
 
     protected Event(Builder builder) {
         super(builder);
@@ -19,6 +25,11 @@ public class Event extends Thing {
         this.startDate = builder.startDate;
         this.locationAsPostalAddress = builder.locationAsPostalAddress;
         this.locationAsString = builder.locationAsString;
+        this.accessibleForFree = builder.accessibleForFree;
+        this.organizer = builder.organizer;
+        this.performer = builder.performer;
+        this.offers = builder.offers;
+        this.eventStatus = builder.eventStatus;
     }
 
     @JsonProperty("startDate")
@@ -43,12 +54,36 @@ public class Event extends Thing {
         return result;
     }
 
+    @JsonProperty("isAccessibleForFree")
+    public boolean isAccessibleForFree() {
+        return accessibleForFree;
+    }
+
+    public String getOrganizer() {
+        return organizer;
+    }
+
+    public String getPerformer() {
+        return performer;
+    }
+
+    public List<Offer> getOffers() { return offers; }
+
+    public String getEventStatus() {
+        return eventStatus;
+    }
+
     public static class Builder extends Thing.Builder {
         private Calendar endDate;
         private Place location;
         private Calendar startDate;
         private PostalAddress locationAsPostalAddress;
         private String locationAsString;
+        private boolean accessibleForFree;
+        private String organizer;
+        private String performer;
+        private List<Offer> offers;
+        private String eventStatus;
 
         public Builder setEndDate(Calendar endDate) {
             this.endDate = endDate;
@@ -72,6 +107,31 @@ public class Event extends Thing {
 
         public Builder setLocation(String locationAsString) {
             this.locationAsString = locationAsString;
+            return this;
+        }
+
+        public Builder setAccessibleForFree(boolean accessibleForFree) {
+            this.accessibleForFree = accessibleForFree;
+            return this;
+        }
+
+        public Builder setOrganizer(String organizer) {
+            this.organizer = organizer;
+            return this;
+        }
+
+        public Builder setPerformer(String performer) {
+            this.performer = performer;
+            return this;
+        }
+
+        public Builder setOffers(List<Offer> offers) {
+            this.offers = offers;
+            return this;
+        }
+
+        public Builder setEventStatus(String eventStatus) {
+            this.eventStatus = eventStatus;
             return this;
         }
 

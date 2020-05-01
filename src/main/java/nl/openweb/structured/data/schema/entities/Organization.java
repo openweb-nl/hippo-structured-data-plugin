@@ -37,6 +37,7 @@ public class Organization extends Thing {
     private String taxID;
     private String telephone;
     private String vatID;
+    private String slogan;
 
     protected Organization(Builder builder) {
         super(builder);
@@ -72,6 +73,7 @@ public class Organization extends Thing {
         this.taxID = builder.taxID;
         this.telephone = builder.telephone;
         this.vatID = builder.vatID;
+        this.slogan = builder.slogan;
     }
 
     public Object getAddress() {
@@ -202,6 +204,10 @@ public class Organization extends Thing {
         return vatID;
     }
 
+    public String getSlogan() {
+        return slogan;
+    }
+
     public static class Builder extends Thing.Builder {
         private Object address;
         private List<Person> alumni;
@@ -235,6 +241,7 @@ public class Organization extends Thing {
         private String taxID;
         private String telephone;
         private String vatID;
+        private String slogan;
 
         public Builder setAddress(String address) {
             this.address = address;
@@ -418,6 +425,11 @@ public class Organization extends Thing {
 
         public Builder setVatID(String vatID) {
             this.vatID = vatID;
+            return this;
+        }
+
+        public Organization.Builder setSlogan(final String slogan) {
+            this.slogan = slogan;
             return this;
         }
 
