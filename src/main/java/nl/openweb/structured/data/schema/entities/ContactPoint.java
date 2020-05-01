@@ -1,9 +1,11 @@
 package nl.openweb.structured.data.schema.entities;
 
+import java.util.List;
+
 public class ContactPoint extends Thing {
 
     private String areaServed;
-    private Language availableLanguage;
+    private List<Language> availableLanguage;
     private String contactType;
     private String email;
     private String faxNumber;
@@ -25,7 +27,7 @@ public class ContactPoint extends Thing {
         return areaServed;
     }
 
-    public Language getAvailableLanguage() {
+    public List<Language> getAvailableLanguage() {
         return availableLanguage;
     }
 
@@ -51,7 +53,7 @@ public class ContactPoint extends Thing {
 
     public static class Builder extends Thing.Builder {
         private String areaServed;
-        private Language availableLanguage;
+        private List<Language> availableLanguage;
         private String contactType;
         private String email;
         private String faxNumber;
@@ -63,7 +65,7 @@ public class ContactPoint extends Thing {
             return this;
         }
 
-        public Builder setAvailableLanguage(Language availableLanguage) {
+        public Builder setAvailableLanguage(List<Language> availableLanguage) {
             this.availableLanguage = availableLanguage;
             return this;
         }
