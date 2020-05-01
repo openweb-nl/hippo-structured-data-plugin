@@ -3,7 +3,7 @@ package nl.openweb.structured.data.utils;
 
 import java.util.Optional;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import nl.openweb.structured.data.processing.StructuredDataProcessor;
 import nl.openweb.structured.data.schema.entities.StructuredData;

@@ -1,9 +1,9 @@
 package nl.openweb.structured.data.mock;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import java.util.EventObject;
 import java.util.Map;
+
+import javax.servlet.ServletContext;
 
 import org.hippoecm.hst.core.container.ComponentManager;
 import org.hippoecm.hst.core.container.ComponentsException;
@@ -19,28 +19,12 @@ public class MockComponentManager implements ComponentManager {
     }
 
     @Override
-    public void setConfigurationResources(String[] strings) {
-
-    }
-
-    @Override
     public String[] getConfigurationResources() {
         return new String[0];
     }
 
     @Override
-    public void setServletConfig(ServletConfig servletConfig) {
-
-    }
-
-    @Override
-    public ServletConfig getServletConfig() {
-        return null;
-    }
-
-    @Override
-    public void setServletContext(ServletContext servletContext) {
-
+    public void setConfigurationResources(String[] strings) {
     }
 
     @Override
@@ -49,13 +33,15 @@ public class MockComponentManager implements ComponentManager {
     }
 
     @Override
-    public void initialize() {
+    public void setServletContext(ServletContext servletContext) {
+    }
 
+    @Override
+    public void initialize() {
     }
 
     @Override
     public void start() {
-
     }
 
     @Override
@@ -90,27 +76,22 @@ public class MockComponentManager implements ComponentManager {
 
     @Override
     public void publishEvent(EventObject eventObject) {
-
     }
 
     @Override
     public void registerEventSubscriber(Object o) {
-
     }
 
     @Override
     public void unregisterEventSubscriber(Object o) {
-
     }
 
     @Override
     public void stop() {
-
     }
 
     @Override
     public void close() {
-
     }
 
     @Override

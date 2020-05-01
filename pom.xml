@@ -5,44 +5,35 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-release</artifactId>
-    <version>10.1.2</version>
+    <version>13.4.2</version>
   </parent>
 
   <groupId>nl.openweb.hippo.hst</groupId>
   <artifactId>structured-data</artifactId>
-  <version>10.0.06-SNAPSHOT</version>
+  <version>13.0.01-SNAPSHOT</version>
+
   <properties>
+    <commons.lang.version>3.10</commons.lang.version>
+    <el-api.version>3.0.0</el-api.version>
     <jsp-api.version>2.2</jsp-api.version>
-    <taglibs.version>1.2.1</taglibs.version>
-    <commons.lang.version>2.6</commons.lang.version>
+    <junit.version>5.6.2</junit.version>
+    <mockito.version>2.21.0</mockito.version>
+    <maven.plugin.release>3.0.0-M1</maven.plugin.release>
+    <pitest.version>1.5.1</pitest.version>
+    <taglibs.version>1.2.5</taglibs.version>
   </properties>
+
   <dependencies>
+    <dependency>
+      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
+      <artifactId>hst-site-dependencies</artifactId>
+      <type>pom</type>
+    </dependency>
     <dependency>
       <groupId>org.apache.taglibs</groupId>
       <artifactId>taglibs-standard-spec</artifactId>
       <version>${taglibs.version}</version>
       <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-      <scope>provided</scope>
-      <version>${jsp-api.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-server-dependencies</artifactId>
-      <type>pom</type>
-    </dependency>
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-spring-dependencies</artifactId>
-      <type>pom</type>
-    </dependency>
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-client-dependencies</artifactId>
-      <type>pom</type>
     </dependency>
     <dependency>
       <groupId>org.apache.taglibs</groupId>
@@ -51,41 +42,43 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>${jsp-api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.el</groupId>
+      <artifactId>javax.el-api</artifactId>
+      <version>${el-api.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
       <version>${commons.lang.version}</version>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>nl.ivonet</groupId>
-      <artifactId>beanunit</artifactId>
-      <version>2.0</version>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>2.0.2-beta</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>el-api</artifactId>
-      <version>6.0.45</version>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <scm>
     <url>https://github.com/openweb-nl/hippo-structured-data-plugin</url>
     <connection>scm:git:git://github.com:openweb-nl/hippo-structured-data-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:openweb-nl/hippo-structured-data-plugin.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
+
   <distributionManagement>
     <repository>
       <id>openweb-maven-releases</id>
@@ -110,12 +103,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.5.3</version>
+          <version>${maven.plugin.release}</version>
         </plugin>
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>1.1.9</version>
+          <version>${pitest.version}</version>
           <configuration>
             <targetClasses>
               <param>nl.openweb.structured.data.processing*</param>
@@ -132,5 +125,4 @@
       </plugins>
     </pluginManagement>
   </build>
-
 </project>
