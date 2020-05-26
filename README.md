@@ -22,7 +22,7 @@ This is an hst addon to providing structured data using json-ld.
     <dependency>
       <groupId>nl.openweb.hippo.hst</groupId>
       <artifactId>structured-data</artifactId>
-      <version>10.0.02</version>
+      <version>13.0.X</version>
     </dependency>
   </project>
   ```
