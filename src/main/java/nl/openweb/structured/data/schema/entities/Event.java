@@ -13,7 +13,7 @@ public class Event extends Thing {
     private PostalAddress locationAsPostalAddress;
     private String locationAsString;
     private boolean accessibleForFree;
-    private String organizer;
+    private Object organizer;
     private String performer;
     private List<Offer> offers;
     private String eventStatus;
@@ -59,7 +59,7 @@ public class Event extends Thing {
         return accessibleForFree;
     }
 
-    public String getOrganizer() {
+    public Object getOrganizer() {
         return organizer;
     }
 
@@ -67,7 +67,9 @@ public class Event extends Thing {
         return performer;
     }
 
-    public List<Offer> getOffers() { return offers; }
+    public List<Offer> getOffers() {
+        return offers;
+    }
 
     public String getEventStatus() {
         return eventStatus;
@@ -80,7 +82,7 @@ public class Event extends Thing {
         private PostalAddress locationAsPostalAddress;
         private String locationAsString;
         private boolean accessibleForFree;
-        private String organizer;
+        private Object organizer;
         private String performer;
         private List<Offer> offers;
         private String eventStatus;
@@ -115,8 +117,13 @@ public class Event extends Thing {
             return this;
         }
 
-        public Builder setOrganizer(String organizer) {
-            this.organizer = organizer;
+        public Builder setOrganizer(Person person) {
+            this.organizer = person;
+            return this;
+        }
+
+        public Builder setOrganizer(Organization organization) {
+            this.organizer = organization;
             return this;
         }
 
