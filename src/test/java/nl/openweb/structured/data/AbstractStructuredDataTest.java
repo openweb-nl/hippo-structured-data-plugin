@@ -57,5 +57,4 @@ public abstract class AbstractStructuredDataTest {
         Mockito.when(requestContext.getServletRequest()).thenReturn(new MockRequest());
         return hstRequest;
     }
-
 }

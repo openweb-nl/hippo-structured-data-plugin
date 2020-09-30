@@ -4,8 +4,8 @@
 
   <parent>
     <groupId>org.onehippo.cms7</groupId>
-    <artifactId>hippo-cms7-release</artifactId>
-    <version>13.4.2</version>
+    <artifactId>hippo-cms7-project</artifactId>
+    <version>30.4.3</version>
   </parent>
 
   <groupId>nl.openweb.hippo.hst</groupId>
@@ -24,11 +24,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-site-dependencies</artifactId>
-      <type>pom</type>
-    </dependency>
     <dependency>
       <groupId>org.apache.taglibs</groupId>
       <artifactId>taglibs-standard-spec</artifactId>
@@ -57,6 +52,52 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>${commons.lang.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.11.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.11.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-commons</artifactId>
+      <version>13.4.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.cms7.hst</groupId>
+      <artifactId>hst-api</artifactId>
+      <version>13.4.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-cms7-commons</artifactId>
+      <version>13.4.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-services</artifactId>
+      <version>13.4.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.2.9.RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>5.2.9.RELEASE</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.vintage</groupId>

@@ -1,23 +1,18 @@
 package nl.openweb.structured.data.utils;
 
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.apache.commons.io.IOUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class TextFileUtils {
     private TextFileUtils() {
     }
 
-    public static String getFileAsString(String name) throws IOException {
+    public static String getFileAsString(String name) throws Exception {
         return getFileAsString(name, TextFileUtils.class.getClassLoader());
     }
 
-    public static String getFileAsString(String name, ClassLoader classLoader) throws IOException {
-        try (InputStream stream = classLoader.getResourceAsStream(name)) {
-            return IOUtils.toString(stream, "UTF-8");
-        }
-
+    public static String getFileAsString(String name, ClassLoader classLoader) throws Exception {
+        return String.join("", Files.readAllLines(Paths.get(classLoader.getResource(name).toURI()), StandardCharsets.UTF_8));
     }
 }
