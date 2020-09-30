@@ -27,9 +27,9 @@ public class StructuredDataTagSupport extends TagSupport {
     protected void printString(String json) throws IOException {
         if (StringUtils.isNotBlank(json)) {
             JspWriter out = pageContext.getOut();
-            out.write("<script type=\"application/ld+json\">\n");
+            out.write("<script type=\"application/ld+json\">");
             out.write(json);
-            out.write("\n</script>\n");
+            out.write("</script>");
         }
     }
 
