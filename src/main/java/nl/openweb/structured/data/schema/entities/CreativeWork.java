@@ -6,6 +6,7 @@ import java.util.List;
 public class CreativeWork extends Thing {
 
     private Thing about;
+    private String abstractProperty;
     private String accessibilityAPI;
     private String accessibilityControl;
     private String accessibilityFeature;
@@ -43,6 +44,7 @@ public class CreativeWork extends Thing {
     private Thing mainEntity;
     private List<Thing> mentions;
     private String position;
+    private Object provider;
     private Object publisher;
     private String publishingPrinciples;
     private Event recordedAt;
@@ -58,6 +60,7 @@ public class CreativeWork extends Thing {
     protected CreativeWork(Builder builder) {
         super(builder);
         this.about = builder.about;
+        this.abstractProperty = builder.abstractProperty;
         this.accessibilityAPI = builder.accessibilityAPI;
         this.accessibilityControl = builder.accessibilityControl;
         this.accessibilityFeature = builder.accessibilityFeature;
@@ -95,6 +98,7 @@ public class CreativeWork extends Thing {
         this.mainEntity = builder.mainEntity;
         this.mentions = builder.mentions;
         this.position = builder.position;
+        this.provider = builder.provider;
         this.publisher = builder.publisher;
         this.publishingPrinciples = builder.publishingPrinciples;
         this.recordedAt = builder.recordedAt;
@@ -110,6 +114,10 @@ public class CreativeWork extends Thing {
 
     public Thing getAbout() {
         return about;
+    }
+
+    public String getAbstract() {
+        return abstractProperty;
     }
 
     public String getAccessibilityAPI() {
@@ -260,6 +268,10 @@ public class CreativeWork extends Thing {
         return position;
     }
 
+    public Object getProvider() {
+        return provider;
+    }
+
     public Object getPublisher() {
         return publisher;
     }
@@ -306,6 +318,7 @@ public class CreativeWork extends Thing {
 
     public static class Builder extends Thing.Builder {
         private Thing about;
+        private String abstractProperty;
         private String accessibilityAPI;
         private String accessibilityControl;
         private String accessibilityFeature;
@@ -343,6 +356,8 @@ public class CreativeWork extends Thing {
         private Thing mainEntity;
         private List<Thing> mentions;
         private String position;
+        private Object provider;
+        private Object publisher;
         private String publishingPrinciples;
         private Event recordedAt;
         private Review review;
@@ -353,10 +368,14 @@ public class CreativeWork extends Thing {
         private String typicalAgeRange;
         private Number version;
         private CreativeWork workExample;
-        private Object publisher;
 
         public Builder setAbout(Thing about) {
             this.about = about;
+            return this;
+        }
+
+        public Builder setAbstract(String abstractProperty) {
+            this.abstractProperty = abstractProperty;
             return this;
         }
 
@@ -545,6 +564,16 @@ public class CreativeWork extends Thing {
             return this;
         }
 
+        public Builder setProvider(Organization organization) {
+            this.provider = organization;
+            return this;
+        }
+
+        public Builder setProvider(Person person) {
+            this.provider = person;
+            return this;
+        }
+
         public Builder setPosition(String position) {
             this.position = position;
             return this;
@@ -609,7 +638,6 @@ public class CreativeWork extends Thing {
             this.workExample = workExample;
             return this;
         }
-
 
         // Following lines override the Parent Thing Builder
         @Override
