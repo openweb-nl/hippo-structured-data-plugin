@@ -10,7 +10,7 @@
 
   <groupId>nl.openweb.hippo.hst</groupId>
   <artifactId>structured-data</artifactId>
-  <version>13.0.03-SNAPSHOT</version>
+  <version>13.0.03</version>
 
   <properties>
     <commons.lang.version>3.10</commons.lang.version>
@@ -117,7 +117,7 @@
     <url>https://github.com/openweb-nl/hippo-structured-data-plugin</url>
     <connection>scm:git:git://github.com:openweb-nl/hippo-structured-data-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:openweb-nl/hippo-structured-data-plugin.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>structured-data-13.0.03</tag>
   </scm>
 
   <distributionManagement>
