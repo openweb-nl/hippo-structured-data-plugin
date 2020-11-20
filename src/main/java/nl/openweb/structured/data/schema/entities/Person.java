@@ -57,6 +57,9 @@ public class Person extends Thing {
 
     private List<Organization> worksFor;
 
+    private String knowsAbout;
+    private Occupation hasOccupation;
+
     protected Person(Builder builder) {
         super(builder);
         this.additionalName = builder.additionalName;
@@ -102,6 +105,8 @@ public class Person extends Thing {
         this.weight = builder.weight;
         this.workLocation = builder.workLocation;
         this.worksFor = builder.worksFor;
+        this.knowsAbout = builder.knowsAbout;
+        this.hasOccupation = builder.hasOccupation;
     }
 
     public String getAdditionalName() {
@@ -276,6 +281,12 @@ public class Person extends Thing {
         return worksFor;
     }
 
+    public String getKnowsAbout(){ return knowsAbout; }
+
+    public Occupation getHasOccupation() {
+        return hasOccupation;
+    }
+
     public static class Builder extends Thing.Builder {
         private String additionalName;
         private String address;
@@ -320,6 +331,8 @@ public class Person extends Thing {
         private QuantitativeValue weight;
         private Place workLocation;
         private List<Organization> worksFor;
+        private String knowsAbout;
+        private Occupation hasOccupation;
 
         public Builder setAdditionalName(String additionalName) {
             this.additionalName = additionalName;
@@ -533,6 +546,16 @@ public class Person extends Thing {
 
         public Builder setWorksFor(List<Organization> worksFor) {
             this.worksFor = worksFor;
+            return this;
+        }
+
+        public Builder setKnowsAbout(String knowsAbout){
+            this.knowsAbout = knowsAbout;
+            return this;
+        }
+
+        public Builder setHasOccupation(Occupation hasOccupation) {
+            this.hasOccupation = hasOccupation;
             return this;
         }
 
