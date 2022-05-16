@@ -4,10 +4,9 @@ import java.text.DateFormat;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import org.junit.Assert;
-
 import nl.openweb.structured.data.domain.BreadcrumbItem;
 import nl.openweb.structured.data.domain.EventBean;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VerificationUtils {
 
@@ -15,29 +14,29 @@ public class VerificationUtils {
     }
 
     public static void verifyEventFields(EventBean bean, JsonNode jsonNode, DateFormat dateFormat) {
-        Assert.assertEquals("http://schema.org", getProperty(jsonNode, "@context"));
-        Assert.assertEquals("Event", getProperty(jsonNode, "@type"));
-        Assert.assertEquals(bean.getName(), getProperty(jsonNode, "name"));
-        Assert.assertEquals(bean.getUrl(), getProperty(jsonNode, "url"));
-        Assert.assertEquals(dateFormat.format(bean.getStartDate().getTime()), getProperty(jsonNode, "startDate"));
+        assertEquals("http://schema.org", getProperty(jsonNode, "@context"));
+        assertEquals("Event", getProperty(jsonNode, "@type"));
+        assertEquals(bean.getName(), getProperty(jsonNode, "name"));
+        assertEquals(bean.getUrl(), getProperty(jsonNode, "url"));
+        assertEquals(dateFormat.format(bean.getStartDate().getTime()), getProperty(jsonNode, "startDate"));
         if (bean.getEndDate() != null) {
-            Assert.assertEquals(dateFormat.format(bean.getEndDate().getTime()), getProperty(jsonNode, "endDate"));
+            assertEquals(dateFormat.format(bean.getEndDate().getTime()), getProperty(jsonNode, "endDate"));
         }
 
         JsonNode location = jsonNode.get("location");
 
-        Assert.assertEquals("http://schema.org", getProperty(location, "@context"));
-        Assert.assertEquals("Place", getProperty(location, "@type"));
-        Assert.assertEquals(bean.getLocation().getName(), getProperty(location, "name"));
-        Assert.assertEquals(bean.getLocation().getAddress(), getProperty(location, "address"));
+        assertEquals("http://schema.org", getProperty(location, "@context"));
+        assertEquals("Place", getProperty(location, "@type"));
+        assertEquals(bean.getLocation().getName(), getProperty(location, "name"));
+        assertEquals(bean.getLocation().getAddress(), getProperty(location, "address"));
     }
 
-    public static void verifyBreadcrumbFields(BreadcrumbItem bean, JsonNode jsonNode, int position){
-        Assert.assertEquals("ListItem", getProperty(jsonNode, "@type"));
-        Assert.assertEquals(position, jsonNode.get("position").asInt());
+    public static void verifyBreadcrumbFields(BreadcrumbItem bean, JsonNode jsonNode, int position) {
+        assertEquals("ListItem", getProperty(jsonNode, "@type"));
+        assertEquals(position, jsonNode.get("position").asInt());
         JsonNode item = jsonNode.get("item");
-        Assert.assertEquals(bean.getName(), getProperty(item, "name"));
-        Assert.assertEquals(bean.getUrl(), getProperty(item, "@id"));
+        assertEquals(bean.getName(), getProperty(item, "name"));
+        assertEquals(bean.getUrl(), getProperty(item, "@id"));
     }
 
     private static String getProperty(JsonNode jsonNode, String propertyName) {

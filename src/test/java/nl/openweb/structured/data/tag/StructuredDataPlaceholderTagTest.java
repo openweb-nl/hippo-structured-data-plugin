@@ -6,21 +6,21 @@ import java.util.TimeZone;
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.PageContext;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import nl.openweb.structured.data.AbstractStructuredDataTest;
 import nl.openweb.structured.data.domain.EventBean;
 import nl.openweb.structured.data.domain.LocationBean;
 import nl.openweb.structured.data.utils.StringWriter;
 import nl.openweb.structured.data.utils.TextFileUtils;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest {
     private StructuredDataPlaceholderTag tag = new StructuredDataPlaceholderTag();
     private StructuredDataContributionTag contributionTag = new StructuredDataContributionTag();
@@ -30,7 +30,7 @@ public class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest
     @Mock
     private PageContext pageContext;
 
-    @Before
+    @BeforeEach
     public void init() {
         super.init();
         tag.setPageContext(pageContext);
@@ -63,6 +63,6 @@ public class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest
 
         tag.doStartTag();
         String string = out.getAsString();
-        Assert.assertEquals(TextFileUtils.getFileAsString("expected/StructuredDataPlaceholderTagTest.txt"), string);
+        assertEquals(TextFileUtils.getFileAsString("expected/StructuredDataPlaceholderTagTest.txt"), string);
     }
 }

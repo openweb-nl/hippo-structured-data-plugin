@@ -1,31 +1,29 @@
 package nl.openweb.structured.data.utils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import nl.openweb.structured.data.AbstractStructuredDataTest;
 import nl.openweb.structured.data.mock.MockRequest;
-
-
 import static nl.openweb.structured.data.tag.StructuredDataPlaceholderTag.STRUCTURED_DATA_AS_JSON;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ContributeStructuredDataTest extends AbstractStructuredDataTest {
-
-
     private HstRequest hstRequest;
     private HttpServletRequest servletRequest = new MockRequest();
 
-    @Before
+    @BeforeEach
     public void init() {
         super.init();
         hstRequest = Mockito.mock(HstRequest.class);
@@ -40,8 +38,7 @@ public class ContributeStructuredDataTest extends AbstractStructuredDataTest {
         ContributeStructuredData.contributeJson("Second Bean", servletRequest);
 
         Object attribute = servletRequest.getAttribute(STRUCTURED_DATA_AS_JSON);
-        Assert.assertTrue(attribute instanceof List);
-        Assert.assertArrayEquals(new String[]{"First Bean", "Second Bean"}, ((List) attribute).toArray());
+        Assertions.assertTrue(attribute instanceof List);
+        assertArrayEquals(new String[]{"First Bean", "Second Bean"}, ((List<String>) attribute).toArray());
     }
-
 }

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.site.HstServices;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -26,7 +26,7 @@ public abstract class AbstractStructuredDataTest {
     protected ObjectMapper objectMapper;
     protected DateFormat dateFormat;
 
-    @Before
+    @BeforeEach
     public void init() {
         objectMapper = new ObjectMapper();
 

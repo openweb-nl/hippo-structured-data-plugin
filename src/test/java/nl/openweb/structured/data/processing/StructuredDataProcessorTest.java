@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 import nl.openweb.structured.data.AbstractStructuredDataTest;
 import nl.openweb.structured.data.domain.EventBean;
@@ -18,6 +17,8 @@ import nl.openweb.structured.data.domain.LocationBean;
 import nl.openweb.structured.data.domain.TrainingEventBean;
 import nl.openweb.structured.data.domain.UnknownBean;
 import nl.openweb.structured.data.utils.VerificationUtils;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StructuredDataProcessorTest extends AbstractStructuredDataTest {
 
@@ -56,13 +57,13 @@ public class StructuredDataProcessorTest extends AbstractStructuredDataTest {
     @Test
     public void unknownBeanTest() {
         String jsonString = structuredDataProcessor.getStructuredDataAsJsonString(new UnknownBean());
-        Assert.assertEquals("", jsonString);
+        assertEquals("", jsonString);
     }
 
-    @Test(expected = NoSuchBeanDefinitionException.class)
-    public void unknownMapperTest(){
-        structuredDataProcessor.getMapperByName("unknown");
+    @Test
+    public void unknownMapperTest() {
+        assertThrows(NoSuchBeanDefinitionException.class, ()->{
+            structuredDataProcessor.getMapperByName("unknown");
+        });
     }
-
-
 }
