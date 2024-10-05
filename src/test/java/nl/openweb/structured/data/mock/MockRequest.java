@@ -1,5 +1,6 @@
 package nl.openweb.structured.data.mock;
 
+import jakarta.servlet.ServletConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -10,20 +11,20 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.AsyncContext;
-import javax.servlet.DispatcherType;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpUpgradeHandler;
-import javax.servlet.http.Part;
+import jakarta.servlet.AsyncContext;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpUpgradeHandler;
+import jakarta.servlet.http.Part;
 
 import org.mockito.Mockito;
 
@@ -47,7 +48,7 @@ public class MockRequest implements HttpServletRequest {
     }
 
     @Override
-    public Enumeration getAttributeNames() {
+    public Enumeration<String> getAttributeNames() {
         return servletRequest.getAttributeNames();
     }
 
@@ -82,7 +83,7 @@ public class MockRequest implements HttpServletRequest {
     }
 
     @Override
-    public Enumeration getLocales() {
+    public Enumeration<Locale> getLocales() {
         return servletRequest.getLocales();
     }
 
@@ -132,17 +133,32 @@ public class MockRequest implements HttpServletRequest {
     }
 
     @Override
+    public String getRequestId() {
+        return servletRequest.getRequestId();
+    }
+
+    @Override
+    public String getProtocolRequestId() {
+        return servletRequest.getProtocolRequestId();
+    }
+
+    @Override
+    public ServletConnection getServletConnection() {
+        return servletRequest.getServletConnection();
+    }
+
+    @Override
     public String getParameter(String name) {
         return servletRequest.getParameter(name);
     }
 
     @Override
-    public Map getParameterMap() {
+    public Map<String, String[]> getParameterMap() {
         return servletRequest.getParameterMap();
     }
 
     @Override
-    public Enumeration getParameterNames() {
+    public Enumeration<String> getParameterNames() {
         return servletRequest.getParameterNames();
     }
 
@@ -159,11 +175,6 @@ public class MockRequest implements HttpServletRequest {
     @Override
     public BufferedReader getReader() throws IOException {
         return servletRequest.getReader();
-    }
-
-    @Override
-    public String getRealPath(String path) {
-        return servletRequest.getRealPath(path);
     }
 
     @Override
@@ -247,12 +258,12 @@ public class MockRequest implements HttpServletRequest {
     }
 
     @Override
-    public Enumeration getHeaderNames() {
+    public Enumeration<String> getHeaderNames() {
         return servletRequest.getHeaderNames();
     }
 
     @Override
-    public Enumeration getHeaders(String name) {
+    public Enumeration<String> getHeaders(String name) {
         return servletRequest.getHeaders(name);
     }
 
@@ -334,11 +345,6 @@ public class MockRequest implements HttpServletRequest {
     @Override
     public boolean isRequestedSessionIdFromURL() {
         return servletRequest.isRequestedSessionIdFromURL();
-    }
-
-    @Override
-    public boolean isRequestedSessionIdFromUrl() {
-        return servletRequest.isRequestedSessionIdFromUrl();
     }
 
     @Override

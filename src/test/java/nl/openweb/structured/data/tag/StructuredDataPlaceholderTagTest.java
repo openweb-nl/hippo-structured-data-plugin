@@ -3,8 +3,8 @@ package nl.openweb.structured.data.tag;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.jsp.PageContext;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest {
+class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest {
     private StructuredDataPlaceholderTag tag = new StructuredDataPlaceholderTag();
     private StructuredDataContributionTag contributionTag = new StructuredDataContributionTag();
     private ServletRequest servletRequest = createMockHstRequest();
@@ -52,7 +52,7 @@ public class StructuredDataPlaceholderTagTest extends AbstractStructuredDataTest
     }
 
     @Test
-    public void doStartTag() throws Exception {
+     void doStartTag() throws Exception {
 
         contributionTag.release();
         contributionTag.setBean(createEvent("Pizza Night", "http://openweb.nl/pizza-night", new LocationBean("Openweb Office", "Nevelgaarde 40, 3436 ZZ Nieuwegein"), createCalendar(2016, Calendar.FEBRUARY, 10)));

@@ -1,7 +1,7 @@
 package nl.openweb.structured.data.tag;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.jsp.JspException;
 import java.io.IOException;
 import java.util.List;
 
@@ -31,8 +31,8 @@ public class StructuredDataPlaceholderTag extends StructuredDataTagSupport {
 
     private void printList(List jsonList) throws IOException {
         for (Object obj : jsonList) {
-            if (obj instanceof String) {
-                printString((String) obj);
+            if (obj instanceof String elm) {
+                printString(elm);
             } else {
                 LOG.error("a non String object was find in the list.");
             }

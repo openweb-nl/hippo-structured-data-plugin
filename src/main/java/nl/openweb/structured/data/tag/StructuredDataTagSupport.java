@@ -1,8 +1,8 @@
 package nl.openweb.structured.data.tag;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.jsp.JspWriter;
+import jakarta.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
 import org.apache.commons.lang3.StringUtils;
@@ -36,8 +36,8 @@ public class StructuredDataTagSupport extends TagSupport {
     protected HippoBean getBeanFromContext() {
         HippoBean result = null;
         ServletRequest request = pageContext.getRequest();
-        if (request instanceof HstRequest) {
-            result = ((HstRequest) request).getRequestContext().getContentBean();
+        if (request instanceof HstRequest hstRequest) {
+            result = hstRequest.getRequestContext().getContentBean();
         }
         return result;
     }

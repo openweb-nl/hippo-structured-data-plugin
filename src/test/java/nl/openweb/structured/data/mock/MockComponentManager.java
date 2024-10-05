@@ -3,7 +3,7 @@ package nl.openweb.structured.data.mock;
 import java.util.EventObject;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.hippoecm.hst.core.container.ComponentManager;
 import org.hippoecm.hst.core.container.ComponentsException;

@@ -1,6 +1,6 @@
 package nl.openweb.structured.data.utils;
 
-import javax.servlet.ServletRequest;
+import jakarta.servlet.ServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +25,10 @@ public class ContributeStructuredData {
 
     @SuppressWarnings("unchecked")
     public static void contributeJson(String json, ServletRequest servletRequest) {
-        ServletRequest request = servletRequest instanceof HstRequest ? ((HstRequest) servletRequest).getRequestContext().getServletRequest() : servletRequest;
+        ServletRequest request = servletRequest instanceof HstRequest hstRequest? hstRequest.getRequestContext().getServletRequest() : servletRequest;
         Object attribute = request.getAttribute(STRUCTURED_DATA_AS_JSON);
-        if (attribute instanceof List) {
-            ((List) attribute).add(json);
+        if (attribute instanceof List list) {
+            list.add(json);
         } else {
             List<String> list = new ArrayList<>();
             list.add(json);
