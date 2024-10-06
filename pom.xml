@@ -47,6 +47,9 @@
   </developers>
 
   <properties>
+    <maven.plugin.javadoc.version>3.10.0</maven.plugin.javadoc.version>
+    <maven.plugin.gpg.version>3.2.5</maven.plugin.gpg.version>
+    <maven.plugin.source.version>3.3.1</maven.plugin.source.version>
     <maven.plugin.release>3.1.1</maven.plugin.release>
     <el-api.version>5.0.0</el-api.version>
   </properties>
