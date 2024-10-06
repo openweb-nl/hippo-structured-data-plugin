@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    registries:
+      - hippo-maven2-enterprise
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/repository-data/webfiles/src/main/webapp/opw/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/repository-data/webfiles/src/main/webapp/werken-bij/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+registries:
+  hippo-maven2-enterprise:
+    type: maven-repository
+    url: https://maven.bloomreach.com/repository/maven2-enterprise/
+    username: ${{ secrets.BLOOMREACH_USER }}
+    password: ${{ secrets.BLOOMREACH_PASSWORD }}
